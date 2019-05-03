@@ -46,6 +46,7 @@ public class OpenLyricsProperties {
     private TitleProperty title;
     private TempoProperty tempo;
     private String copyright;
+    private String ccliNo;
     private List<String> verseOrder;
     private List<String> authors;
     private String key;
@@ -149,6 +150,25 @@ public class OpenLyricsProperties {
      */
     public String getCopyright() {
         return copyright;
+    }
+
+    /**
+     * Set ccli number of the song.
+     * 
+     * @param ccli number
+     */
+    public void setCcliNo(String ccliNo) {
+        this.ccliNo = ccliNo;
+    }
+
+
+    /**
+     * Get ccli number of the song.
+     *
+     * @return ccli number
+     */
+    public String getCcliNo() {
+        return ccliNo;
     }
 
 

@@ -100,6 +100,7 @@ public class OpenLyricsObject {
             this.getAuthorsProp(properties);
             this.getCopyrightProp(properties);
             this.getTempoProp(properties);
+            this.getCcliNoProp(properties);
             this.getKeyProp(properties);
             this.getPublisherProp(properties);
             this.getVerseOrderProp(properties);
@@ -185,6 +186,20 @@ public class OpenLyricsObject {
             Element tempoNode = (Element) tempoNodeList.item(0);
             this.properties.setTempo(new TempoProperty(tempoNode.getChildNodes().item(0).getTextContent().toLowerCase(),
                                                        tempoNode.getAttribute("type").toLowerCase()));
+        }
+    }
+    
+
+    /**
+     * Get the CCLI no. property, if any.
+     *
+     * @param properties
+     */
+    private void getCcliNoProp(Element properties) throws OpenLyricsException {
+        NodeList ccliNoList = properties.getElementsByTagName("ccliNo");
+        if (ccliNoList != null && ccliNoList.getLength() > 0) {
+            this.properties.setCcliNo(ccliNoList.item(0)
+                    .getChildNodes().item(0).getTextContent());
         }
     }
 
