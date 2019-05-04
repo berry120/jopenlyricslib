@@ -34,6 +34,7 @@ package de.suse.lib.openlyrics;
 
 import de.suse.lib.openlyrics.properties.OpenLyricsProperties;
 import de.suse.lib.openlyrics.properties.TempoProperty;
+import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -80,7 +81,31 @@ public class OpenLyricsObject {
                    SAXException,
                    IOException,
                    OpenLyricsException {
-        this.doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(new StringReader(source)));
+        this(DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(new StringReader(source))));
+    }
+
+    /**
+     * Parse OLBean from the XML.
+     * 
+     * @param source
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws IOException
+     */
+    public OpenLyricsObject(File source)
+            throws ParserConfigurationException,
+                   SAXException,
+                   IOException,
+                   OpenLyricsException {
+        this(DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(source));
+    }
+    
+    private OpenLyricsObject(Document source)
+            throws ParserConfigurationException,
+                   SAXException,
+                   IOException,
+                   OpenLyricsException {
+        this.doc = source;
         this.properties = new OpenLyricsProperties();
         this.lyrics = new HashMap<Locale, List<Verse>>();
 
