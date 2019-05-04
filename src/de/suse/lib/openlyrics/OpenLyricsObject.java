@@ -36,6 +36,7 @@ import de.suse.lib.openlyrics.properties.OpenLyricsProperties;
 import de.suse.lib.openlyrics.properties.TempoProperty;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -85,7 +86,7 @@ public class OpenLyricsObject {
     }
 
     /**
-     * Parse OLBean from the XML.
+     * Parse OLBean from the file.
      * 
      * @param source
      * @throws ParserConfigurationException
@@ -93,6 +94,22 @@ public class OpenLyricsObject {
      * @throws IOException
      */
     public OpenLyricsObject(File source)
+            throws ParserConfigurationException,
+                   SAXException,
+                   IOException,
+                   OpenLyricsException {
+        this(DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(source));
+    }
+
+    /**
+     * Parse OLBean from the input stream.
+     * 
+     * @param source
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws IOException
+     */
+    public OpenLyricsObject(InputStream source)
             throws ParserConfigurationException,
                    SAXException,
                    IOException,
