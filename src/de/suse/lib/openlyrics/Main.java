@@ -56,54 +56,10 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            DataInputStream in = new DataInputStream(new FileInputStream(args[0]));
-            BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
-            String xline;
-            StringBuilder xmlsource = new StringBuilder();
-            while ((xline = br.readLine()) != null) {
-                xmlsource.append(xline.trim());
-            }
-            in.close();
-
-            OpenLyricsObject ol = new OpenLyricsObject(xmlsource.toString());
-
-            new OpenLyricsWriter(ol).writeToFile(new File("/tmp/foo.xml"), true);
-            System.exit(1);
-
-            System.err.println("Lyrics for " + ol.getProperties().getTitleProperty().getDefaultTitle());
-            System.err.println("Copyright (C) by " + ol.getProperties().getCopyright());
-            System.err.println("Key: " + ol.getProperties().getKey());
-            System.err.println("");
-
-            for (int i = 0; i < ol.getVerses().size(); i++) {
-                Verse verse = ol.getVerses().get(i);
-                System.err.println("    Verse " + verse.getName());
-                for (int j = 0; j < verse.getLines().size(); j++) {
-                    VerseLine line = verse.getLines().get(j);
-
-                    // Write chords line above text line
-                    StringBuilder renderedChords = new StringBuilder();
-                    int lastOffset = 0;
-                    for (int k = 0; k < line.getChords().size(); k++) {
-                        Chord chord = line.getChords().get(k);
-                        renderedChords.append(Main.fill(chord.getLineOffset() - lastOffset));
-                        renderedChords.append(chord.getRoot())
-                                      .append(chord.isFlat() ? "b" : (chord.isSharp() ? "#" : ""))
-                                      .append(chord.isMinor() ? "m" : "")
-                                      .append(chord.getInterval() > 0 ? chord.getInterval() : "")
-                                      .append(chord.getQuality() == null ? "" : chord.getQuality());
-                        lastOffset = chord.getLineOffset(); // Also remove all chords space too, but that's cosmetics.
-                    }
-
-                    System.err.println("        " + renderedChords.toString());
-                    System.err.println("        " + line.getText());
-                }
-                System.err.println("");
-            }
-
+            OpenLyricsObject ol = new OpenLyricsObject(args[0]);
+            //Add any debug to test
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Error: " + e.getMessage());
         }
     }
 }
