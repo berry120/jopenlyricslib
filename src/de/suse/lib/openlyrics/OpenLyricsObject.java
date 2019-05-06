@@ -161,7 +161,7 @@ public class OpenLyricsObject {
         if (commentsNodeList != null) {
             for (int i = 0; i < commentsNodeList.getLength(); i++) {
                 this.properties.addComment(((Element) commentsNodeList.item(i))
-                        .getChildNodes().item(0).getTextContent());
+                        .getTextContent());
             }
         }
     }
