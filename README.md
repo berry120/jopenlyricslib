@@ -27,3 +27,8 @@ functionality at first place.
 Thefore future development may use own dialect, based on OpenLyrics,
 although keeping backward compatibility with the current version.
 
+Attribution
+-----------
+
+This library was forked from https://github.com/isbm/jopenlyricslib, and various improvements / bugfixes were added.
+
