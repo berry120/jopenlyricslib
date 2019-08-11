@@ -60,6 +60,9 @@ import org.xml.sax.SAXException;
 /**
  * OpenLyrics Song Bean.
  * Parsed from XML string source.
+ * 
+ * Testing? Do something like "OpenLyricsObject ol = new OpenLyricsObject(new File("C:\\users\\blah\\desktop\\test.xml"));"
+ * and go from there.
  *
  * @author bo
  */
