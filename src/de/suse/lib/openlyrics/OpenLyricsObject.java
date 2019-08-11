@@ -341,41 +341,42 @@ public class OpenLyricsObject {
 
         Verse verse = new Verse();
         verse.setName(verseElement.getAttribute("name")); // XXX: Or!??
-        Element linesNode = (Element) verseElement.getElementsByTagName("lines").item(0);
-        if (linesNode == null) {
-            throw new OpenLyricsException("No lines in the verse.");
-        }
-        NodeList textNodes = linesNode.getChildNodes();
+        
+        NodeList lineNodes = verseElement.getElementsByTagName("lines");
+        for (int i = 0; i < lineNodes.getLength(); i++) {
+            Node lineNode = lineNodes.item(i);
+            NodeList textNodes = lineNode.getChildNodes();
 
-        StringBuilder textLine = new StringBuilder();
-        VerseLine line = new VerseLine();
+            StringBuilder textLine = new StringBuilder();
+            VerseLine line = new VerseLine();
 
-        for (int i = 0; i < textNodes.getLength(); i++) {
-            Node textElement = textNodes.item(i);
-            if (textElement.getNodeName().toLowerCase().equals("br")) {
-                if (!textLine.toString().isEmpty()) {
-                    line.setText(textLine.toString());
-                    verse.addLine(line);
-                }
+            for (int j = 0; j < textNodes.getLength(); j++) {
+                Node textElement = textNodes.item(j);
+                if (textElement.getNodeName().toLowerCase().equals("br")) {
+                    if (!textLine.toString().isEmpty()) {
+                        line.setText(textLine.toString());
+                        verse.addLine(line);
+                    }
 
-                textLine = new StringBuilder();
-                line = new VerseLine();
-            } else if (textElement.getNodeType() == Node.TEXT_NODE) {
-                textLine.append(textElement.getTextContent());
-            } else if (textElement.getNodeName().equals("chord")) {
-                try {
-                    Chord chord = new Chord(((Element) textElement).getAttribute("name"));
-                    chord.setLineOffset(textLine.toString().trim().length()); // Skip spaces
-                    line.addChord(chord);
-                } catch (OpenLyricsException ex) {
-                    Logger.getLogger(OpenLyricsObject.class.getName()).log(Level.SEVERE, null, ex);
+                    textLine = new StringBuilder();
+                    line = new VerseLine();
+                } else if (textElement.getNodeType() == Node.TEXT_NODE) {
+                    textLine.append(textElement.getTextContent());
+                } else if (textElement.getNodeName().equals("chord")) {
+                    try {
+                        Chord chord = new Chord(((Element) textElement).getAttribute("name"));
+                        chord.setLineOffset(textLine.toString().trim().length()); // Skip spaces
+                        line.addChord(chord);
+                    } catch (OpenLyricsException ex) {
+                        Logger.getLogger(OpenLyricsObject.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
-        }
-
-        if (!textLine.toString().isEmpty()) {
-            line.setText(textLine.toString());
-            verse.addLine(line);
+            
+            if (!textLine.toString().isEmpty()) {
+                line.setText(textLine.toString());
+                verse.addLine(line);
+            }
         }
 
         this.lyrics.get(locale).add(verse);
