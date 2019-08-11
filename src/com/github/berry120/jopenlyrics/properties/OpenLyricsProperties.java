@@ -30,7 +30,7 @@
  */
 
 
-package de.suse.lib.openlyrics.properties;
+package com.github.berry120.jopenlyrics.properties;
 
 import java.util.ArrayList;
 import java.util.Collections;

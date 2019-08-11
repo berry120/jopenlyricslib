@@ -30,9 +30,9 @@
  */
 
 
-package de.suse.lib.openlyrics.properties;
+package com.github.berry120.jopenlyrics.properties;
 
-import de.suse.lib.openlyrics.OpenLyricsException;
+import com.github.berry120.jopenlyrics.OpenLyricsException;
 
 /**
  * Tempo property for the OpenLyrics Object.

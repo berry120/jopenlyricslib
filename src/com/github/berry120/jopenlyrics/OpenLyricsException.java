@@ -30,7 +30,7 @@
  */
 
 
-package de.suse.lib.openlyrics;
+package com.github.berry120.jopenlyrics;
 
 /**
  * Base exception for the OpenLyrics object.

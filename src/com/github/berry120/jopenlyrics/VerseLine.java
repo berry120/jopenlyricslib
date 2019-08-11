@@ -29,7 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package de.suse.lib.openlyrics;
+package com.github.berry120.jopenlyrics;
 
 import java.util.ArrayList;
 import java.util.Collections;

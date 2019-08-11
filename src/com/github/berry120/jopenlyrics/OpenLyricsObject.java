@@ -30,10 +30,10 @@
  */
 
 
-package de.suse.lib.openlyrics;
+package com.github.berry120.jopenlyrics;
 
-import de.suse.lib.openlyrics.properties.OpenLyricsProperties;
-import de.suse.lib.openlyrics.properties.TempoProperty;
+import com.github.berry120.jopenlyrics.properties.OpenLyricsProperties;
+import com.github.berry120.jopenlyrics.properties.TempoProperty;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;

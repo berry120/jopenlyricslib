@@ -30,12 +30,12 @@
  */
 
 
-package utils;
+package com.github.berry120.jopenlyrics.utils;
 
-import de.suse.lib.openlyrics.Chord;
-import de.suse.lib.openlyrics.OpenLyricsObject;
-import de.suse.lib.openlyrics.Verse;
-import de.suse.lib.openlyrics.VerseLine;
+import com.github.berry120.jopenlyrics.Chord;
+import com.github.berry120.jopenlyrics.OpenLyricsObject;
+import com.github.berry120.jopenlyrics.Verse;
+import com.github.berry120.jopenlyrics.VerseLine;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;

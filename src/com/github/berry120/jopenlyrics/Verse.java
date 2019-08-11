@@ -29,13 +29,67 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+package com.github.berry120.jopenlyrics;
 
-package utils;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
- *
+ * Verse object of the OpenLyrics set of verses.
+ * 
  * @author bo
  */
-public class SongBeamerUtil {
+public class Verse {
 
+    private String name;
+    private List<VerseLine> lines;
+
+
+    /**
+     * Constructor.
+     *
+     */
+    public Verse() {
+        this.lines = new ArrayList<VerseLine>();
+    }
+
+
+    /**
+     * Add verse line.
+     *
+     * @param line
+     */
+    public void addLine(VerseLine line) {
+        this.lines.add(line);
+    }
+
+
+    /**
+     * Get lines in the verse.
+     *
+     * @return
+     */
+    public List<VerseLine> getLines() {
+        return Collections.unmodifiableList(this.lines);
+    }
+
+
+    /**
+     * Set name of the verse (ID)
+     *
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    /**
+     * Get the name (ID) of the verse
+     * @return
+     */
+    public String getName() {
+        return this.name;
+    }
 }
