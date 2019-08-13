@@ -7,6 +7,20 @@ Generic library with OpenLyrics parser and writer for Java.
 Library is used for parsing OpenLyrics XML into a complex Java POJO
 and contains utilities to export the result back.
 
+Usage
+-----
+
+**Maven**
+
+    <dependency>
+      <groupId>com.github.berry120.jopenlyrics</groupId>
+      <artifactId>jopenlyrics</artifactId>
+      <version>2.0</version>
+    </dependency>
+    
+**Gradle**
+
+    implementation 'com.github.berry120.jopenlyrics:jopenlyrics:2.0'
 
 Limitations
 -----------
